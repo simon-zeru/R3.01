@@ -3,6 +3,14 @@
 require_once('model/music.class.php');
 require_once('model/dao.class.php');
 
+// Récupération de toutes les musiques
+$musics = [];
+for ($i = 1; $i <= 8; $i++) {
+  $musics[] = Music::read($i);
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

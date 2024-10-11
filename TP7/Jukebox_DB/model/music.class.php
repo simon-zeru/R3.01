@@ -16,6 +16,12 @@ class Music
   function __construct(int $id, string $author, string $title, string $cover, string $mp3, string $category)
   {
     // TODO
+    $this->id = $id;
+    $this->author = $author;
+    $this->title = $title;
+    $this->cover = $cover;
+    $this->mp3 = $mp3;
+    $this->category = $category;
   }
 
 
@@ -28,12 +34,47 @@ class Music
     // Ouverture le la BD par création d'un DAO
     $dao = new DAO();
 
-    return new Music(0,'','','','','');
+    static $QUERY = 'SELECT * FROM music WHERE id = :id';
+    $requete = $dao->prepare($QUERY);
+    $requete->execute([':id' => $id]);
+    $data = $requete->fetchAll();
+
+    return new Music($data['id'],$data['author'],$data['title'],$data['cover'],$data['mp3'],$data['category']);
   }
 
-  // Max Id
+  // Max Id 
   public static function maxId() : int
   { 
     return 554;
+  }
+
+  public function getId() : int
+  {
+    return $this->id;
+  }
+
+  public function getAuthor() : string
+  {
+    return $this->author;
+  }
+
+  public function getTitle() : string
+  {
+    return $this->title;
+  }
+
+  public function getCover() : string
+  {
+    return self::URL . 'img/' . $this->cover;
+  }
+
+  public function getMp3() : string
+  {
+    return self::URL . 'mp3/' . $this->mp3;
+  }
+
+  public function getCategory() : string
+  {
+    return $this->category;
   }
 }

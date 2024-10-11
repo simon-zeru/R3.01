@@ -4,6 +4,14 @@
 require_once('model/music.class.php');
 require_once('model/dao.class.php');
 
+// Récupération de l'Id de la musique à jouer
+$id = $_GET['id'];
+$music = Music::read($id);
+
+// Récupération de la page de provenance
+$page = $_GET['page'];
+$pageSize = $_GET['pageSize'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -17,14 +25,14 @@ require_once('model/dao.class.php');
       <h1>Playing : Community Centre from Passenger</h1>
     </header>
     <nav>
-      <a href="jukebox.php?page=1&pageSize=8">
+      <a href="jukebox.php?page='<?= $page ?>'&pageSize='<?= $pageSize ?>'">
         back
       </a>
     </nav>
     <section>
       <figure>
-        <img src="http://www-info.iut2.upmf-grenoble.fr/intranet/enseignements/ProgWeb/data/musiques/img/1.jpg">
-        <audio src="http://www-info.iut2.upmf-grenoble.fr/intranet/enseignements/ProgWeb/data/musiques/mp3/1.mp3" controls autoplay ></audio>
+        <img src="'<?= $music->getCover() ?>'">
+        <audio src="'<?= $music->getMp3() ?>'" controls autoplay ></audio>
       </figure>
     </section>
     <br/>
