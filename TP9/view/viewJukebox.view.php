@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>&#x1F399; Mon jukebox static</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="view/design/style.css">
 </head>
 <body>
   <header>
