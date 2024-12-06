@@ -66,7 +66,7 @@
           <?php foreach ($error as $ligne) : ?>
             <li>
               <?= $ligne ?>
-            </li>
+              <//li>
             <?php endforeach; ?>
           </ul>
         </output>

@@ -4,11 +4,16 @@
 // Inclusion du framework
 include_once('framework/view.fw.php');
 // Inclusion du modèle
-include_once('model/Article.class.php');
+include_once('model/article.class.php');
 
-// 
-///////////////////////////////////////////////////////
-// A COMPLETER
-///////////////////////////////////////////////////////
+$viewName = $_GET['viewName'];
 
-// 
+if (isset($viewName)) {
+    $view = new View();
+    $view->display($viewName);
+} else {
+    $view = new View();
+    $view->display("menu");
+}
+
+

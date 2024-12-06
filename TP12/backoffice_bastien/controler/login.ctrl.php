@@ -3,24 +3,30 @@
 // Inclusion du framework
 include_once("framework/view.fw.php");
 
-$connected = false;
-
-if (isset($_SESSION['connected'])) {
-  $connected = $_SESSION['connected'];
-}
-
-
-$login = $_POST['login'];
-$password = $_POST['password'];
-
-if (isset($login) && isset($password)) {
-  if ($login == 'admin' && $password == 'admin') {
-    $connected = true;
-  }
-  $_SESSION['connected'] = true;
-}
-
 // 
+///////////////////////////////////////////////////////
+// A COMPLETER
+///////////////////////////////////////////////////////
+
+// Vérifier si le formulaire de connexion a été soumis
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $login = $_POST['login'];
+  $password = $_POST['password'];
+
+  // Vérifier les informations d'identification
+  if ($login == 'admin' && $password == 'admin') {
+    $_SESSION['connected'] = true;
+  } else {
+    $_SESSION['connected'] = false;
+  }
+}
+
+// Vérifier si l'utilisateur est connecté
+if (isset($_SESSION['connected']) && $_SESSION['connected'] == true) {
+  $connected = true;
+} else {
+  $connected = false;
+}
 
 ////////////////////////////////////////////////////////////////////////////
 // Construction de la vue

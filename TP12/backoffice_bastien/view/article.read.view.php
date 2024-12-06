@@ -20,11 +20,12 @@
     <h2>Accès à un article</h2>
     <form method="get">
       <input type="hidden" name="ctrl" value="article.read">
-      <p>
-        <label for="articleRef">Référence de l'article</label>
-        <input type="number" id="articleRef" name="articleRef" value="<?= $article->getRef() ?>">
-        <input type="submit" value="lire">
-      </p>
+      <!--  COMPLETER LE FORMULAIRE -->
+      <label for="article_id">ID :</label>
+      <input type="text" id="ref" name="ref" required>
+      <br>
+      <button type="submit">Rechercher</button>
+      <!--  -->
     </form>
     <?php if (isset($error) && count($error) != 0) : ?>
       <output class="error">
@@ -33,7 +34,7 @@
           <?php foreach ($error as $ligne) : ?>
             <li>
               <?= $ligne ?>
-            </li>
+              </ /li>
             <?php endforeach; ?>
         </ul>
       </output>

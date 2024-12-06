@@ -18,13 +18,12 @@
     <h2>Suppression d'un article</h2>
       <form method="get">
       <input type="hidden" name="ctrl" value="article.delete">
-      <input type="hidden" name="action" value="delete">
-      <input type="hidden" name="id" value="<?= $article['id'] ?>">
-      <p>
-        <label for="titre">Titre de l'article</label>
-        <input type="text" name="titre" id="titre" value="<?= $article['titre'] ?>" readonly>
-      </p>
-      <input type="submit" value="Supprimer">
+        <!--  COMPLETER LE FORMULAIRE -->
+        <p>Êtes-vous sûr de vouloir supprimer cet article ?</p>
+        <input type="hidden" name="article_id" value="<?= $ref ?>">
+        <button type="submit" name="confirm_delete" value="yes">Oui</button>
+        <a href="index.php">Non</a>
+        <!--  -->
       </form>
     <?php if (isset($error) && count($error) != 0) : ?>
       <output class="error">
@@ -33,7 +32,7 @@
           <?php foreach ($error as $ligne) : ?>
             <li>
               <?= $ligne ?>
-            </li>
+              <//li>
             <?php endforeach; ?>
           </ul>
         </output>

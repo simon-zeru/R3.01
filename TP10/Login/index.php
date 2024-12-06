@@ -23,7 +23,7 @@ if ($submit == "login") {
     }
    
 } else if ($submit == "new") {
-    include('vies/not_implemented.html');
+    include('view/not_implemented.html');
 } else {
     include("view/login.html");
 }
